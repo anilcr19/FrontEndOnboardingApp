@@ -8,3 +8,9 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
+  .docs
+{
+    flex-direction: column;
+    overflow-y: auto;
+}

@@ -8,6 +8,7 @@ import { toast,ToastContainer } from "react-toastify";
 import { useSSRSafeId } from "@react-aria/ssr";
 import { BsFillCalculatorFill } from "react-icons/bs";
 import { FaBlackTie } from "react-icons/fa";
+import './OfferLetter.css'
  function OfferLetter(){
     
     console.log(localStorage.getItem('userdata'));
@@ -48,18 +49,6 @@ import { FaBlackTie } from "react-icons/fa";
             })
 
     }
-    const offerStyle={
-        textAlign:"center",
-        color:"Black",
-        fontSize:"23px"
-    }
-    const mystyle={
-        color: "white",
-        padding: "10px",
-        fontFamily: "Arial",
-        display: "flex",
-        justifyContent: "center"
-    }
    
     const viewStatus=async()=>{
         console.log(employee);
@@ -82,23 +71,37 @@ import { FaBlackTie } from "react-icons/fa";
         <div>
             <Navbar/>
             <br></br>
-            <p style={offerStyle}>Enter the username of the Candidate whose Offer Acceptance Status you want to check</p>
-            <div style={mystyle}>
-                  <input type="email" size="30" onChange={(e)=>{setEmployee(e.target.value);
-                    document.getElementById("true").style.display='none';
-                    document.getElementById("false").style.display='none';
-                    }} className="btn btn-outline-secondary"/>
-                  <button type="submit" className="btn btn-primary" onClick={viewStatus} style={{marginLeft:10}}>Check</button>
-            </div>
+            <div className='offer' style={{display: 'flex',  justifyContent:'center', alignItems:'center',alignContent:'center'}}>
+            <p >Enter the username of the Candidate whose Offer Acceptance Status you want to check</p>
             <center>
+
+            <div class="form-group row mt-2">
+       <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3"> Email
+       <b className='req'> *</b>
+       </label>
+        <div class="col-sm-10">
+        <input type="email"  class="form-control form-control-sm" 
+
+        onChange={(e)=>{setEmployee(e.target.value);
+         document.getElementById("true").style.display='none';
+            document.getElementById("false").style.display='none';}}
+        
+         />
+        </div>
+      <center>  <Button     style={{  width:'5cm'  }}  className='btn btn-primary mb-5' onClick={viewStatus} > View Status</Button>
+      </center></div>
+
+
+
+
                 <div id="offerStatus"  >
-                        <div id="true"style={{  display:'none' ,color:"green" }} >The above user accepted the offer Letter</div>
+                        <div id="true"style={{  display:'none' ,color:"green" }} >The above candidate accepted the offer Letter</div>
                     
-                        <div id="false"style={{  display:'none' ,color:"red" }}>The above user has not accepted the offer Letter</div>
+                        <div id="false"style={{  display:'none' ,color:"red" }}>The above candidate has not accepted the offer Letter</div>
                     
                     </div>
                 
-            </center>
+            </center></div>
             <ToastContainer/>
         </div>:
         (

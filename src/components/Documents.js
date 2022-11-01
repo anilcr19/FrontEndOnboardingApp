@@ -140,20 +140,30 @@ const openInNewTab = url => {
     authid==3?
     <div>
       <Navbar/>
-      <br></br>
-      <p   style={{textAlign:"center",color:"Black",fontSize:"23px"}}>Enter the username of Candidate whose files need to be fetched</p>
-    <div >
-       <div style={mystyle}>
-       <input type="email" size="30" className="btn btn-outline-secondary" onChange={(e)=>{setEmployee (e.target.value);
 
-        document.getElementById("urll").style.display='none';
+      <div className='docs' style={{display: 'flex',  justifyContent:'center', alignItems:'center',alignContent:'center'}}>
+            <p class="mt-2" >Enter the username of the Candidate whose Documents you want to check</p>
+           
+            <div class="form-group row mt-2">
+       <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3"> Email
+       <b className='req'> *</b>
+       </label>
+        <div class="col-sm-10">
+        <input type="email"  class="form-control form-control-sm" 
+
+        onChange={(e)=>{ setEmployee (e.target.value);
+
+          document.getElementById("urll").style.display='none';}}
         
-      }}></input>
-       <button type="submit" onClick={viewDocuments} className="btn btn-primary" style={{marginLeft:10}}>submit</button>
-       </div>
-       
-       
-    </div>
+         />
+        </div>
+
+        <center><Button     style={{  width:'5cm'  }}  className='btn btn-primary mb-5' onClick={viewDocuments} > View Documents</Button>
+        </center>
+        </div></div>
+      
+
+
 
      <center><div id="urll" style={{  display:'none'  }} >
         <Button onClick={ e=> openInNewTab(e.target.value)  }  value="" id="resumeurl" className="btn btn-success" style={{marginRight:"10px" ,marginTop:"30px"}}>Resume</Button> 

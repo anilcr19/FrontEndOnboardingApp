@@ -1,0 +1,11 @@
+.offer
+{
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.req
+{
+    color: rgb(246, 7, 7);
+    
+}
