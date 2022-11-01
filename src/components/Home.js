@@ -41,7 +41,7 @@ function Home(props) {
     var cand={
           'cemail':'',
           'cpassword':'',
-          'cdept':'',
+          'cdept':'IT',
           'csal':'',
           'cname':'',
           'cloc':'',
@@ -159,27 +159,24 @@ function Home(props) {
   const sendEmail= async (e)=>{
     e.preventDefault();
 
-    if(!firstname||!lastname)
-          {
-                toast.error("Fill all the required fields");
-          }
-
-          else{
+    {
 
             let password = passwordGenerator();
 
-            let virtusaemail = firstname+middleName+lastname+"@virtusa.com";
-
-            console.log(virtusaemail);
-
+            
             console.log(password);
 
             document.getElementById("pass_word").value=password;
 
             document.getElementById("email").value=localStorage.getItem('username');
 
-            axios.post(`http://localhost:8017/generatemail/${localStorage.getItem('username')}/${virtusaemail}/${password}`).then(res=>
+            axios.post(`http://localhost:8017/generatemail/${localStorage.getItem('username')}/${password}`).then(res=>
            {
+
+            console.log(res.data);
+
+                document.getElementById("virtusamailid").value=res.data
+
                 emailjs.sendForm('service_pnzzwnz', 'template_8zsenzm', form1.current, '4Ctb_sqQaySydPYc-')
                 .then((result) => {
                     console.log(result.text);
@@ -216,50 +213,21 @@ function Home(props) {
       
        <div  className='home' style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <h1>Generate Your Mail Id</h1>
-      <Card   className='card-home'>
-      <Card.Body>
+      
 
           <form  ref={form1} >
-          <div  style={{ display:'none' }}  class="form-group row">
-       <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3">Email
-       <b className='req'> *</b>
-       </label>
-        <div class="col-sm-10">
-        <input type="email" id="email"  value={localStorage.getItem('username')}  onChange={e=>{setEmail(e.target.value)}} class="form-control form-control-sm"   placeholder='enter email address' name='email' />
-        </div>
-        </div>
-        <div class="form-group row">
-        <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3">First Name
-        <b className='req'> *</b>
-        </label>
-        <div class="col-sm-10">
-        <input type="text"  onChange={e=>{setFirstName(e.target.value)}} class="form-control form-control-sm" placeholder='enter first name'  name='first_name'/>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3"> Middle Name
-        </label>
-        <div class="col-sm-10">
-        <input type="text"   onChange={e=>{setMiddleName(e.target.value)}}  class="form-control form-control-sm" placeholder='enter middle name'  name='middle_name'/>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3">Last Name
-        <b className='req'> *</b>
-        </label>
-        <div class="col-sm-10">
-        <input type="text"   onChange={e=>{setLastName(e.target.value)}} class="form-control form-control-sm" placeholder='enter last name' name="last_name" />
-        </div>
-        </div><br></br>
-          <input style={{display:"none"}} type="text" class="form-control form-control-sm" name="pass_word"  id="pass_word"></input>
+          
+          <input type="email" style={{display:"none"}} name="virtusamailid"  id="virtusamailid" ></input>
+
+          <input type="email" style={{display:"none"}} name="email"  id="email" ></input>
+
+          <input style={{display:"none"}} type="text"  name="pass_word"  id="pass_word"></input>
         </form>
 
-        <button  class="btn btn-primary "  onClick={sendEmail} >Submit</button>
+        <center><button  class="btn btn-primary mt-2 "  onClick={sendEmail} > Generate </button>
 
+        </center>
 
-
-      </Card.Body>
-    </Card>
     </div>
 
     <ToastContainer/>
@@ -302,7 +270,7 @@ function Home(props) {
         
        // alert(cand.cdept);
         
-        }} class="form-control form-control-sm"  name='cdept' >
+        }}  id="dep" class="form-control form-control-sm"  name='cdept' >
         <option value="IT">Information Technology</option>
         <option value="HR">Human Resource</option>
         <option value="MRKT">Marketing</option>

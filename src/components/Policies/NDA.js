@@ -1,40 +1,88 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import jsPDF from "jspdf";
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+import {toast,ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function NDA(){
+    var url  = `http://localhost:8017/policies/${localStorage.username}` 
+    useEffect(()=>{
+            axios.get(url).then( data => {
+                setCheck(data.data.ndaPolicy);
+                setAlreadyAccepted(data.data.ndaPolicy);
+            })
+    },[]);
+    const [alreadyAccepted, setAlreadyAccepted] = useState(false);
+    const [check, setCheck] = useState(false);
+    const checkboxHandler = () => {
+        setCheck(!check);
+    }
+    const submitForm = ()=>{
+        var ndaPolicy = {
+            ndaPolicy : true
+        }
+        axios.put(url,ndaPolicy).then(res=>{
+            toast.success("NDA Agreement signed !")
+        setAlreadyAccepted(check);
+        
+        })
+    }
     var generatePDF = () => {
         var doc = new jsPDF("p","pt","a4");
-        console.log("here");
         doc.html(document.querySelector(".content"), {
             callback : function(pdf){
                 pdf.save("NDA.pdf");
-                console.log("here too");
             }
         })
     }
-    const submitForm = ()=>{
-        alert("NDA Agreement signed !!!")
-    }
-    return(
-        <div>
+    const notAccepted = ()=>{
+        return(
+            <div>
             <div className="content">
                 <h1>NDA Agreement</h1>
-                <div className="agreementText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis vestibulum orci, non bibendum velit ullamcorper quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc rutrum ut felis non hendrerit. Pellentesque sed quam sed neque aliquam eleifend. Nulla facilisi. Sed elementum libero et tortor consequat dignissim. Vestibulum at laoreet sem, et ultrices sapien. Vivamus tempus massa a mauris dapibus, quis eleifend dolor fringilla. Etiam non erat non enim rutrum consectetur eget nec enim. Fusce commodo ligula at leo iaculis, a varius erat tincidunt. In faucibus enim vehicula diam maximus, eget pharetra mi dictum. Proin pretium ultricies dolor. Ut ipsum lectus, ultrices in dui sed, venenatis tempus urna.
-
-Nulla dictum vel lorem vel placerat. Donec et sapien et libero scelerisque tincidunt id in mi. Praesent ex risus, eleifend a ligula sit amet, commodo pulvinar orci. Pellentesque tristique ligula a libero maximus commodo. Fusce nec purus gravida justo tempor pellentesque quis nec magna. Nulla consequat dui non turpis molestie, sed hendrerit leo varius. Aliquam a magna magna. Donec vitae massa a urna porta posuere.
-
-In hac habitasse platea dictumst. Aenean condimentum, erat id placerat vehicula, sem eros accumsan eros, id vestibulum dui erat et est. Quisque pellentesque maximus felis, eu dapibus erat semper ac. Nulla malesuada ex venenatis ligula luctus dapibus. Aenean aliquam elementum lacus tincidunt congue. Phasellus et mattis elit. Maecenas gravida, dui eu tincidunt rhoncus, quam leo efficitur nibh, vitae finibus ipsum felis eget ipsum. Aliquam tempus, lacus eu faucibus molestie, mauris turpis eleifend dui, egestas fringilla libero tellus ut libero. Nullam nunc leo, blandit nec felis ut, placerat aliquam magna.
+                <div className="agreementText">
+                Either Party shall use the Confidential Information solely in furtherance of the actual or potential business relationship between the parties.  
+                The parties shall not use the Confidential Information in any way that is directly or indirectly detrimental to the other party or its subsidiaries or affiliates, and shall not disclose the Confidential Information to any unauthorized third party.<br></br><br></br>
+                Parties shall ensure that access to Confidential Information is granted only to those of its employees or agents (“Representatives”) who have a demonstrated need to know such information in order to carry out the business purpose of this Agreement. 
+                Prior to disclosing any Confidential Information to such Representatives, party shall inform them of the confidential nature of the information and their obligation to refrain from disclosure of the Confidential Information. 
+                Each party and its Representatives will take all reasonable measures to maintain the confidentiality of the Confidential Information, but in no event less than the measures it uses for its own information of similar type. 
+                Parties and its Representatives shall not disclose to any person including, without limitation, any corporation, sovereign, partnership, limited liability company, entity or individual 
+                <br></br><br></br>(i) the fact that any investigations, discussions or negotiations are taking place concerning the actual or potential business relationship between the parties, 
+                <br></br>(ii) that it has requested or received Confidential Information, or 
+                <br></br>(iii) any of the terms, conditions or any other fact about the actual or potential business relationship.  
                 </div>
                 <div className="agree">
-                    <input className='accept' type="checkbox" />
+                    <input className='accept' type="checkbox" checked={check} onChange={checkboxHandler}/>
                     <label className="acceptText">I accept the agreement</label>
                 </div>
             </div>
             <div className="buttons">
                 <Button onClick={generatePDF} type="primary"> Download </Button>
-                <Button onClick={submitForm}> Save </Button>
+                <Button onClick={submitForm} disabled={!check} variant={check?"primary":"secondary"}> Save </Button>
+                {/* {check && <Button onClick={submitForm}> Save </Button>}
+                {!check && <Button onClick={submitForm} disabled variant="secondary"> Save </Button>} */}
             </div>
         </div>
+        )
+    }
+    const accepted = () => {
+        return(
+            <div className="acceptedPage">
+                <h1>Policy Accepted</h1>
+            </div>
+        )
+    }
 
+    const renderPage = () => {
+        if(alreadyAccepted)   return accepted();
+        else        return notAccepted();
+    }
+    return(
+        <>
+            {   renderPage()    }
+            <ToastContainer />
+        </>
     );
 }

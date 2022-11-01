@@ -176,13 +176,15 @@ function Login() {
                     
                     localStorage.setItem('userdata',JSON.stringify(res.data));
 
-                    
+                    navigate("/home");
 
+                   }).catch(res=>{
+                    console.log(res);
                    })
                   
                    
 
-                   navigate("/home");
+                   
                    
                 }
               
@@ -204,8 +206,8 @@ function Login() {
          
 
     <div className='login'  style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-           <div className="title"><h2 >EMPLOYEE ONBOARDING SYSTEM</h2></div>
-           <h4>LOGIN</h4>
+           <div className="title"><p className='tt'>EMPLOYEE ONBOARDING SYSTEM</p></div>
+           
             <Card  style={{width:'30rem',height:'20rem'}} className="card-login">
     <Card.Body>
     

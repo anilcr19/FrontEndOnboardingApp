@@ -13,7 +13,8 @@ card-title
 {
     font-family: sans-serif ;
     flex-direction: column;
-    background-color: aliceblue;
+    /* background-color: aliceblue;
+ */
 }
 
 .block {
@@ -25,6 +26,7 @@ card-title
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    border-radius: 25px;
   }
   
 
@@ -32,12 +34,13 @@ card-title
   {
     background-color:azure;
      margin-bottom: 2rem;
+
   }
 
   .card-login
   {
     border-width: 5px;
-    border-color:rgb(103, 103, 189);
+    border-color:rgb(133, 132, 138);
     border-radius: 5%;
   }
 
@@ -47,7 +50,9 @@ card-title
     font-family:sans-serif
   }
 
-  h2
+  .tt
   {
-    font-family: Arial, Helvetica, sans-serif;
+    font-size:xx-large;
+    font-family: Brushstroke;
+    font-weight: bold;
   }
