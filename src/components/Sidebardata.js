@@ -61,8 +61,8 @@ export const Sidebardata=[
     }
     ,
     {
-        title:'Traning ',
-        path:'/training',
+        title:'Courses',
+        path:'/courses',
         icon:<IoDesktop/>,
         cName:'nav-text'
     }

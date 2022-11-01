@@ -174,6 +174,13 @@ function Home(props) {
            {
 
             console.log(res.data);
+            console.log(typeof(res.data));
+
+            if(res.data=="invalid")
+            {
+                  toast.error("Your background Verification is not completed so far");
+                  return
+            }
 
                 document.getElementById("virtusamailid").value=res.data
 
@@ -197,6 +204,55 @@ function Home(props) {
       
   }
 
+
+  const removeCandidate=()=>{
+
+      axios.get(`http://localhost:8017/removeCandidate/${document.getElementById("rmc").value}`).then(res=>{
+            console.log(res.data);
+
+            console.log(typeof(res.data));
+
+            if(res.data=="invalid")
+            {
+              toast.warning("candidate does not exist");
+              return
+            }
+
+
+            toast.success("candidate removed");
+
+
+      }).catch(res=>{
+
+            toast.error("try again");
+      })
+
+
+  }
+
+
+    const bgvCandidate=()=>{
+
+      axios.get(`http://localhost:8017/bgv/${document.getElementById("bgvc").value}`).then(res=>{
+
+        console.log(res.data);
+
+        console.log(typeof(res.data));
+
+              if(!res.data)
+              {
+                toast.warning("candidate does not exist");
+                return
+              }
+
+              toast.success("status updated");
+
+      }).catch(res=>{
+
+        toast.error("try again");
+  })
+
+    }
   
 
 
@@ -314,6 +370,58 @@ function Home(props) {
 
       </Card.Body>
     </Card>
+
+
+         
+
+
+
+        <h1>Background Verification</h1>
+
+        <Card className='card-home'>
+
+          <Card.Body>
+
+          <div class="form-group row">
+       <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3">Email
+       <b className='req'> *</b>
+       </label>
+        <div class="col-sm-10">
+        <input type="email" id="bgvc"  class="form-control form-control-sm"   placeholder='enter email address' />
+        </div>
+        </div>
+
+        <button  class="btn btn-success"  onClick={bgvCandidate} > BGV Done </button>
+         
+          </Card.Body>
+
+        </Card>
+
+
+        <h1>Remove Candidate</h1>
+
+        <Card className='card-home'>
+
+          <Card.Body>
+
+          <div class="form-group row">
+       <label  for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm mb-3">Email
+       <b className='req'> *</b>
+       </label>
+        <div class="col-sm-10">
+        <input type="email" id="rmc"  class="form-control form-control-sm"   placeholder='enter email address' />
+        </div>
+        </div>
+
+        <button  class="btn btn-danger "  onClick={removeCandidate} >Remove Candidate</button>
+         
+          </Card.Body>
+
+        </Card>
+
+
+
+
     </div>
 
     <ToastContainer/>

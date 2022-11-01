@@ -8,7 +8,7 @@ import Letter  from './components/Documents';
 import DocsVerify from './components/OfferLetter';
 import ServiceBond from './components/ServiceBond';
 import BankDetails from './components/BankDetails/BankDetails';
-import Training from './components/Training';
+import Training from './components/Courses';
 import Policy from './components/Policies/Policy';
 import Documents from './components/Documents'
 import { useNavigate } from 'react-router-dom';
@@ -38,14 +38,16 @@ function closingCode()
         <Routes>
         <Route path='/logout' exact element={<Login/>}></Route>
         <Route path='/' exact  element={<Login/>}> </Route>
+        
             <Route path='/home' exact  element={<ProtectedRoute><Home/></ProtectedRoute>}> </Route>
-              <Route path='/details' element={<ProtectedRoute><Details/></ProtectedRoute>}> </Route>
-              <Route path='/documents' element={<Documents/>}> </Route>
-              <Route path='/offer' element={<OfferLetter/>}> </Route>
-              <Route path='/service' element={<ServiceBond/>}> </Route>
-              <Route path='/policy' element={<Policy/>}> </Route>
-              <Route path='/bank' element={<BankDetails/>}> </Route>
-              <Route path='/training' element={<Training/>}> </Route>
+              <Route path='/details' exact element={<ProtectedRoute><Details/></ProtectedRoute>}> </Route>
+              <Route path='/documents' exact element={<ProtectedRoute><Documents/></ProtectedRoute>}> </Route>
+              <Route path='/offer' exact element={<ProtectedRoute><OfferLetter/></ProtectedRoute>}> </Route>
+              <Route path='/service' exact element={<ProtectedRoute><ServiceBond/></ProtectedRoute>}> </Route>
+              <Route path='/policy' exact element={<ProtectedRoute><Policy/></ProtectedRoute>}> </Route>
+              <Route path='/bank' exact element={<ProtectedRoute><BankDetails/></ProtectedRoute>}> </Route>
+              <Route path='/courses' exact element={<ProtectedRoute><Training/></ProtectedRoute>}> </Route>
+              
            </Routes> 
       }
 

@@ -1,53 +1,35 @@
 const AllItems=[
   {
-    "Title": "React",
-    "Instructor": "Bharath ThippiReddy",
-    "Img": "https://reactjs.org/logo-og.png",
-  "url":"https://youtu.be/4UZrsTqkcW4"
+    "Title": "Pandemic Response Training",
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284727/z76cievrffjc8sccvi8z.png",
+  "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667218733/ibduhpntooky77neww4f.pdf"
   },
   {
-    "Title": "Spring Boot",
-    "Instructor": "Ramachandran",
-    "Img": "https://programadoresbrasil.com.br/wp-content/uploads/2021/05/Spring-BOOT-Interview-questions-1.jpg",
-    "url":"https://youtu.be/35EQXmHKZYs"
+    "Title": "Safety First" ,
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284578/kvl8x4c7qlzybqafkywc.png",
+    "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667218789/e4f4zbbvohzegtntezsd.pdf"
   },
   {
-    "Title": "My Sql",
-    "Instructor": "Manas Chowdhary",
-    "Img": "https://guiltyparties.com/wp-content/uploads/2020/06/MySQL-Logo.png",
-   "url":"https://youtu.be/WmGgxTpGs_8"
+    "Title": "Code of Conduct",
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284628/xmfcnljtbohswlczzl7p.png",
+   "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667218855/utikixkisemud9atkdy5.pdf"
   },
 
   {
-    "Title": "Spring MVC",
-    "Instructor": "Janardhan Kumar",
-    "Img": "https://5.imimg.com/data5/CO/RG/WK/GLADMIN-14526645/selection-036-500x500.png",
-    "url":"https://youtu.be/g2b-NbR48Jo"
+    "Title": "Intellectual Property Rights",
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284675/utkhnewimvjxn8yaec0m.png",
+    "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667218904/s0etbiswpvkvsyxpclqd.pdf"
   },
   {
-    "Title": "Spring Core",
-    "Instructor": "Balakrishna Swamy",
-    "Img": "https://javabycode.com/wp-content/uploads/2017/02/Spring_Core_component_scan.png",
-    "url":"https://youtu.be/H47ewetqyMw"
+    "Title": "Information Security",
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284766/zn3bnidga58lobsoylgk.png",
+    "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667218977/sxfqct9twervovbyuljf.pdf"
   },
   {
-    "Title": "Junit Testing",
-    "Instructor": "Vijay Sharma",
-    "Img": "https://javacodehouse.com/assets/img/thumb/JUnit.svg",
-    "url":"https://youtu.be/d2KwvXQgQx4"
+    "Title": "Data Privacy Training Program",
+    "Img": "http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667284365/fihkyhecxjn7qgjg50w0.png",
+    "url":"http://res.cloudinary.com/dvnkjzw2o/image/upload/v1667219035/udvdfrykete54hhygrsj.pdf"
   },
-  {
-    "Title": "Angular Js",
-    "Instructor": "Sharada Sharma",
-    "Img": "https://repository-images.githubusercontent.com/24195339/87018c00-694b-11e9-8b5f-c34826306d36",
-    "url":"https://youtu.be/AAu8bjj6-UI"
-  },
-  {
-    "Title": "Mockito",
-    "Instructor": "Pranathi",
-    "Img": "https://i0.wp.com/blog.fossasia.org/wp-content/uploads/2018/08/mock.png?fit=774%2C380&ssl=1",
-    "url":"https://youtu.be/2X21g340azs"
-  },
-
+  
 ];
 export default AllItems;
