@@ -15,11 +15,6 @@ function Login() {
 
     const [login,setLogin]=useState(true)
 
-    
-
-
-
-
     const navigate= useNavigate();
 
     const initialValue = {

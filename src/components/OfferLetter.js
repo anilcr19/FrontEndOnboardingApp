@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Navbar from './Navbar'
 import axios from 'axios'
 import { toast,ToastContainer } from "react-toastify";
-import { useSSRSafeId } from "@react-aria/ssr";
-import { BsFillCalculatorFill } from "react-icons/bs";
-import { FaBlackTie } from "react-icons/fa";
+// import { useSSRSafeId } from "@react-aria/ssr";
+// import { BsFillCalculatorFill } from "react-icons/bs";
+// import { FaBlackTie } from "react-icons/fa";
 import './OfferLetter.css'
  function OfferLetter(){
     
@@ -72,7 +72,7 @@ import './OfferLetter.css'
             <Navbar/>
             <br></br>
             <div className='offer' style={{display: 'flex',  justifyContent:'center', alignItems:'center',alignContent:'center'}}>
-            <p >Enter the username of the Candidate whose Offer Acceptance Status you want to check</p>
+            <p class="mt-2" >Enter the username of the Candidate whose Offer Acceptance Status you want to check</p>
             <center>
 
             <div class="form-group row mt-2">
@@ -141,7 +141,7 @@ Sundararajan Narayanan
 <br></br>
 Chief People Officer & Global Head Of Human Resources
 <br></br>
-Virtusa Consulting Services Pvt Ltd, India
+Virtusa Consulting Services Pvt Ltd
                 </div>
                 
             </div>
@@ -181,7 +181,7 @@ Sundararajan Narayanan
 <br></br>
 Chief People Officer & Global Head Of Human Resources
 <br></br>
-Virtusa Consulting Services Pvt Ltd, India
+Virtusa Consulting Services Pvt Ltd.
             </div>
             
         </div>

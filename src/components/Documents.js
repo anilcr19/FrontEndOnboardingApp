@@ -165,11 +165,13 @@ const openInNewTab = url => {
 
 
 
-     <center><div id="urll" style={{  display:'none'  }} >
+    <center>
+      <div id="urll" style={{  display:'none'  }} >
         <Button onClick={ e=> openInNewTab(e.target.value)  }  value="" id="resumeurl" className="btn btn-success" style={{marginRight:"10px" ,marginTop:"30px"}}>Resume</Button> 
         <Button onClick={ e=> openInNewTab(e.target.value)  }  value="" id="markurl" className="btn btn-success" style={{marginLeft:"10px" ,marginTop:"30px"}}> marksheets</Button>
 
-      </div></center>
+      </div>
+    </center>
 
     </div>
     :(
